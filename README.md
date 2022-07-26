@@ -10,3 +10,8 @@
 brew tap mongodb/brew
 brew install mongodb-community
 ~~~
+
+
+### MongoDB Web Shell
+
+- https://mws.mongodb.com/
