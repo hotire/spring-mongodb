@@ -3,6 +3,8 @@
 ### References
 
 - https://www.mongodb.com/docs/manual/introduction/
+- https://spring.io/guides/gs/accessing-data-mongodb/
+- https://www.baeldung.com/spring-data-mongodb-tutorial
 
 ### install
 
