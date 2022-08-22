@@ -24,7 +24,6 @@ brew install mongodb-community
 brew install --cask mongodb-compass
 ~~~
 
-
 ## Features
 
 - NoSQL
@@ -75,4 +74,25 @@ Collection 은 Document 의 그룹, 모음을 말한다.
 
 
 
+## MongoDB 스토리지 엔진 
 
+현재 MongoDB 서버에서는 아래와 같이 다양한 스토리지 엔진을 사용할 수 있다.
+
+
+| 기능            | MMAPv1      | WiredTiger | In-Memory | RocksDB       | TokuDB |
+|------------|-------------|------------|--------|---------------|--------|
+| 잠금수준          | 컬렉션         | 도큐먼트       | 도큐먼트   | 도큐먼트          | 도큐먼트   |
+| 데이터 구조        | B-tree      | B-tree     | LSM    | Fractcal-Tree | 
+| 빌트인 캐시        | X (운영체제 캐시) | O          | O      | O             |
+| 세컨드리 인덱스      | O           | O          | O      | O             | O      |
+| 데이터 압축        | X           | O          | O      | O             | O      |
+| 인덱스 압축        | X           | O          | O        | X             | O      |
+| 암호화           | X           | O          | X      | X             | X      |
+| In-Memory 지원  | X           | O          | X      | X             | X      |
+| 컬렉션 파티션       | X           | X          | X      | O             | O      |
+
+
+MMAPv1 스토리지 엔진은 MongoDB가 처음 출시했을 때부터 사용되던 스토리지 엔진이다.
+MMAPv1 제외한 모든 스토리지 엔진에서 도큐먼트 수준의 잠금을 지원하기 때문에 동시성 처리는 우수하다.
+유일하게 TokuDB 컬렉션 파티션 기능도 제공한다. 여기서 파티션 기능은 컬렉션을 샤드 서버별로 분산하는 것을 의미하는 것이 아니라
+주로 RDBMS에서 사용하는 파티션을 의미한다.
